@@ -10,11 +10,11 @@
   --cell-border: rgba(255, 255, 255, 0.08);
   --neon-glow: 0 0 10px rgba(102, 252, 241, 0.5);
   
-  --piece-black-gradient: linear-gradient(135deg, #434343 0%, #000000 100%);
-  --piece-black-shadow: 0 4px 6px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255,255,255,0.2);
+  --piece-black-gradient: radial-gradient(circle at 30% 30%, #7a7a7a 0%, #1a1a1a 60%, #000000 100%);
+  --piece-black-shadow: 0 4px 8px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.25), inset 0 2px 5px rgba(255, 255, 255, 0.35);
   
-  --piece-white-gradient: linear-gradient(135deg, #ffffff 0%, #d4d4d4 100%);
-  --piece-white-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 -2px 4px rgba(0,0,0,0.1);
+  --piece-white-gradient: radial-gradient(circle at 30% 30%, #ffffff 0%, #e6e6e6 60%, #b3b3b3 100%);
+  --piece-white-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.8), inset 0 -2px 5px rgba(0, 0, 0, 0.15);
 }
 
 * {

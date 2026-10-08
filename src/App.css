@@ -148,7 +148,7 @@
 }
 
 .cell {
-  background: #2d4b4e;
+  background: #5d999e;
   border-radius: 4px;
   position: relative;
   cursor: pointer;
@@ -167,7 +167,7 @@
 }
 
 .cell.occupied:hover {
-  background: #2d4b4e;
+  background: #5d999e;
 }
 
 .piece-container {

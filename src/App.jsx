@@ -162,25 +162,27 @@ function App() {
           </div>
         </div>
 
-        <div className="board-container">
-          {board.map((row, r) => 
-            row.map((cell, c) => (
-              <div 
-                key={`${r}-${c}`}
-                className={`cell ${cell !== null ? 'occupied' : ''}`}
-                onClick={() => handleCellClick(r, c)}
-              >
-                {cell !== null && (
-                  <div className="piece-container">
-                    <div className={`piece-inner ${cell === PLAYER_B ? 'is-black' : 'is-white'}`}>
-                      <div className="piece-face face-black"></div>
-                      <div className="piece-face face-white"></div>
+        <div className="board-wrapper">
+          <div className="board-container">
+            {board.map((row, r) => 
+              row.map((cell, c) => (
+                <div 
+                  key={`${r}-${c}`}
+                  className={`cell ${cell !== null ? 'occupied' : ''}`}
+                  onClick={() => handleCellClick(r, c)}
+                >
+                  {cell !== null && (
+                    <div className="piece-container">
+                      <div className={`piece-inner ${cell === PLAYER_B ? 'is-black' : 'is-white'}`}>
+                        <div className="piece-face face-black"></div>
+                        <div className="piece-face face-white"></div>
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            ))
-          )}
+                  )}
+                </div>
+              ))
+            )}
+          </div>
         </div>
       </div>
 

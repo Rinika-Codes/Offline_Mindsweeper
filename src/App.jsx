@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { BookOpen, ChevronRight, ChevronLeft, X } from 'lucide-react';
 import './App.css';
 
 const BOARD_SIZE = 8;
@@ -19,6 +20,17 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [winner, setWinner] = useState(null);
   const [timeLeft, setTimeLeft] = useState(15);
+  const [showRules, setShowRules] = useState(false);
+  const [ruleStep, setRuleStep] = useState(0);
+
+  const rulesContent = [
+    { title: "Objective", text: "Finish the game with more pieces of your color than your opponent." },
+    { title: "How to Play", text: "Players take turns placing one piece on any empty cell on the board." },
+    { title: "Capturing", text: "Trap opponent pieces in a continuous straight line (horizontal, vertical, or diagonal) between your newly placed piece and an existing piece of your color. The trapped pieces will flip to your color!" },
+    { title: "No Chain Reactions", text: "Only the piece you JUST placed can capture. Pieces that flip during a turn do not trigger further captures." },
+    { title: "Safe Placements", text: "Placing your piece inside an existing trap does NOT cause it to be captured. Only placing a NEW piece completes a trap." },
+    { title: "Game Over", text: "The game ends when the board is completely full. The player with the most pieces wins!" }
+  ];
 
   const scores = useMemo(() => {
     let black = 0;
@@ -116,6 +128,11 @@ function App() {
 
   return (
     <div className="app-container">
+      <button className="rules-btn" onClick={() => { setShowRules(true); setRuleStep(0); }}>
+        <BookOpen size={20} />
+        Rules
+      </button>
+
       <div className="header">
         <h1 className="title">Eclipse Grid</h1>
         <p className="subtitle">Strategic 8×8 Board Game</p>
@@ -168,16 +185,50 @@ function App() {
       </div>
 
       {gameOver && (
-        <div className="game-over-overlay">
+        <div className="overlay">
           <div className="game-over-modal">
             <h2 className="game-over-title">Game Over</h2>
-            <div className="winner-text">
+            <div className={`winner-text ${winner === PLAYER_B ? 'winner-black' : winner === PLAYER_W ? 'winner-white' : ''}`}>
               {winner === 'DRAW' 
                 ? "It's a Draw!" 
                 : `${winner === PLAYER_B ? 'Black' : 'White'} Wins!`}
             </div>
-            <p>Final Score: {scores.black} - {scores.white}</p>
+            <p className="final-score-text">Final Score: {scores.black} - {scores.white}</p>
             <button className="restart-btn" onClick={restartGame}>Play Again</button>
+          </div>
+        </div>
+      )}
+
+      {showRules && (
+        <div className="overlay">
+          <div className="rules-modal">
+            <button className="close-btn" onClick={() => setShowRules(false)}><X size={24} /></button>
+            <h2 className="rules-title">{rulesContent[ruleStep].title}</h2>
+            <p className="rules-text">{rulesContent[ruleStep].text}</p>
+            
+            <div className="rules-controls">
+              <button 
+                className="rule-nav-btn" 
+                onClick={() => setRuleStep(prev => Math.max(0, prev - 1))}
+                disabled={ruleStep === 0}
+              >
+                <ChevronLeft size={20} /> Prev
+              </button>
+              <div className="rule-dots">
+                {rulesContent.map((_, i) => (
+                  <span key={i} className={`dot ${i === ruleStep ? 'active' : ''}`} />
+                ))}
+              </div>
+              <button 
+                className="rule-nav-btn" 
+                onClick={() => {
+                  if (ruleStep === rulesContent.length - 1) setShowRules(false);
+                  else setRuleStep(prev => prev + 1);
+                }}
+              >
+                {ruleStep === rulesContent.length - 1 ? 'Finish' : <>Next <ChevronRight size={20} /></>}
+              </button>
+            </div>
           </div>
         </div>
       )}

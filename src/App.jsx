@@ -193,7 +193,7 @@ function App() {
                 ? "It's a Draw!" 
                 : `${winner === PLAYER_B ? 'Black' : 'White'} Wins!`}
             </div>
-            <p>Final Score: {scores.black} - {scores.white}</p>
+            <p className="final-score-text">Final Score: {scores.black} - {scores.white}</p>
             <button className="restart-btn" onClick={restartGame}>Play Again</button>
           </div>
         </div>

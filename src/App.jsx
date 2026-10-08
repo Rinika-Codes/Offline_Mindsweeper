@@ -19,7 +19,7 @@ function App() {
   const [currentPlayer, setCurrentPlayer] = useState(() => Math.random() < 0.5 ? PLAYER_B : PLAYER_W);
   const [gameOver, setGameOver] = useState(false);
   const [winner, setWinner] = useState(null);
-  const [timeLeft, setTimeLeft] = useState(15);
+  const [timeLeft, setTimeLeft] = useState(20);
   const [showRules, setShowRules] = useState(false);
   const [ruleStep, setRuleStep] = useState(0);
 
@@ -59,7 +59,7 @@ function App() {
     
     if (timeLeft === 0) {
       setCurrentPlayer(prev => prev === PLAYER_B ? PLAYER_W : PLAYER_B);
-      setTimeLeft(15);
+      setTimeLeft(20);
       return;
     }
 
@@ -115,7 +115,7 @@ function App() {
 
     setBoard(newBoard);
     setCurrentPlayer(prev => prev === PLAYER_B ? PLAYER_W : PLAYER_B);
-    setTimeLeft(15);
+    setTimeLeft(20);
   };
 
   const restartGame = () => {
@@ -123,7 +123,7 @@ function App() {
     setCurrentPlayer(Math.random() < 0.5 ? PLAYER_B : PLAYER_W);
     setGameOver(false);
     setWinner(null);
-    setTimeLeft(15);
+    setTimeLeft(20);
   };
 
   return (

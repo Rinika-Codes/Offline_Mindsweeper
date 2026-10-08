@@ -9,7 +9,10 @@
 }
 
 .header {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .title {
@@ -42,7 +45,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 4rem;
+    gap: 2rem;
   }
 }
 
@@ -276,9 +279,7 @@
 }
 
 .rules-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+  margin-top: 0.5rem;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   color: var(--text-primary);

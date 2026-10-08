@@ -128,14 +128,13 @@ function App() {
 
   return (
     <div className="app-container">
-      <button className="rules-btn" onClick={() => { setShowRules(true); setRuleStep(0); }}>
-        <BookOpen size={20} />
-        Rules
-      </button>
-
       <div className="header">
         <h1 className="title">Eclipse Grid</h1>
         <p className="subtitle">Strategic 8×8 Board Game</p>
+        <button className="rules-btn" onClick={() => { setShowRules(true); setRuleStep(0); }}>
+          <BookOpen size={20} />
+          Rules
+        </button>
       </div>
 
       <div className="game-layout">

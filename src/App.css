@@ -145,7 +145,7 @@
 }
 
 .cell {
-  background: rgba(255, 255, 255, 0.12);
+  background: #2d4b4e;
   border-radius: 4px;
   position: relative;
   cursor: pointer;
@@ -164,7 +164,7 @@
 }
 
 .cell.occupied:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: #2d4b4e;
 }
 
 .piece-container {

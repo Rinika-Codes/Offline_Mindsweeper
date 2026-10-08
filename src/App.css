@@ -13,7 +13,7 @@
 }
 
 .title {
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 6vw, 3rem);
   font-weight: 800;
   color: var(--text-highlight);
   text-transform: uppercase;
@@ -277,18 +277,20 @@
 
 .rules-btn {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 1rem;
+  right: 1rem;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   color: var(--text-primary);
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   font-weight: 600;
+  font-size: 0.9rem;
   transition: all 0.3s;
+  z-index: 10;
 }
 
 .rules-btn:hover {

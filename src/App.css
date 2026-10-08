@@ -123,13 +123,13 @@
   grid-template-rows: repeat(8, 1fr);
   gap: 4px;
   width: 100%;
-  max-width: min(100%, 55vh);
+  max-width: min(100%, 45vh);
   aspect-ratio: 1;
 }
 
 @media (min-width: 900px) {
   .board-container {
-    max-width: min(900px, 75vh);
+    max-width: min(900px, 65vh);
     flex: 1;
   }
 }

@@ -123,9 +123,15 @@
   grid-template-rows: repeat(8, 1fr);
   gap: 4px;
   width: 100%;
-  max-width: 900px;
-  flex: 1;
+  max-width: min(100%, 55vh);
   aspect-ratio: 1;
+}
+
+@media (min-width: 900px) {
+  .board-container {
+    max-width: min(900px, 75vh);
+    flex: 1;
+  }
 }
 
 .cell {

@@ -141,13 +141,13 @@ function App() {
       <div className="game-layout">
         <div className="scoreboard">
           <div className={`player-score ${currentPlayer === PLAYER_B && !gameOver ? 'active' : ''}`}>
-            <span className="player-label">Cyan</span>
+            <span className="player-label">Black</span>
             <span className="score-value">{scores.black}</span>
           </div>
           <div className="turn-indicator">
             {!gameOver ? (
               <>
-                <div>{currentPlayer === PLAYER_B ? 'Cyan' : 'White'}'s Turn</div>
+                <div>{currentPlayer === PLAYER_B ? 'Black' : 'White'}'s Turn</div>
                 <div className="timer" style={{ color: timeLeft <= 5 ? '#ff4b4b' : 'var(--text-highlight)' }}>
                   {timeLeft}s
                 </div>
@@ -193,7 +193,7 @@ function App() {
             <div className="winner-text">
               {winner === 'DRAW' 
                 ? "It's a Draw!" 
-                : `${winner === PLAYER_B ? 'Cyan' : 'White'} Wins!`}
+                : `${winner === PLAYER_B ? 'Black' : 'White'} Wins!`}
             </div>
             <p className="final-score-text">Final Score: {scores.black} - {scores.white}</p>
             <button className="restart-btn" onClick={restartGame}>Play Again</button>

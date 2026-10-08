@@ -10,8 +10,8 @@
   --cell-border: rgba(255, 255, 255, 0.08);
   --neon-glow: 0 0 10px rgba(102, 252, 241, 0.5);
   
-  --piece-black-gradient: radial-gradient(circle at 30% 30%, #a6fffb 0%, #00e0d1 50%, #008a80 100%);
-  --piece-black-shadow: 0 5px 12px rgba(0, 0, 0, 0.8), 0 0 15px rgba(102, 252, 241, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.8);
+  --piece-black-gradient: radial-gradient(circle at 30% 30%, #333333 0%, #000000 60%);
+  --piece-black-shadow: 0 5px 12px rgba(0, 0, 0, 0.9), inset 0 2px 5px rgba(255, 255, 255, 0.15);
   
   --piece-white-gradient: radial-gradient(circle at 30% 30%, #ffffff 0%, #e6e6e6 60%, #b3b3b3 100%);
   --piece-white-shadow: 0 5px 12px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.8), inset 0 -2px 6px rgba(0, 0, 0, 0.15);

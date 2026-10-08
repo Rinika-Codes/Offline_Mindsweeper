@@ -185,15 +185,15 @@ function App() {
       </div>
 
       {gameOver && (
-        <div className="overlay">
+        <div className="overlay overlay-blur-heavy">
           <div className="game-over-modal">
             <h2 className="game-over-title">Game Over</h2>
-            <div className={`winner-text ${winner === PLAYER_B ? 'winner-black' : winner === PLAYER_W ? 'winner-white' : ''}`}>
+            <div className="winner-text">
               {winner === 'DRAW' 
                 ? "It's a Draw!" 
                 : `${winner === PLAYER_B ? 'Black' : 'White'} Wins!`}
             </div>
-            <p className="final-score-text">Final Score: {scores.black} - {scores.white}</p>
+            <p>Final Score: {scores.black} - {scores.white}</p>
             <button className="restart-btn" onClick={restartGame}>Play Again</button>
           </div>
         </div>

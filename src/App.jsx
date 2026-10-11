@@ -15,8 +15,9 @@ function App() {
   const [board, setBoard] = useState(() => 
     Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(null))
   );
-  // Randomize starting player
-  const [currentPlayer, setCurrentPlayer] = useState(() => Math.random() < 0.5 ? PLAYER_B : PLAYER_W);
+  const [gameStarted, setGameStarted] = useState(false);
+  // White always starts first
+  const [currentPlayer, setCurrentPlayer] = useState(PLAYER_W);
   const [gameOver, setGameOver] = useState(false);
   const [winner, setWinner] = useState(null);
   const [timeLeft, setTimeLeft] = useState(20);
@@ -55,7 +56,7 @@ function App() {
   }, [scores]);
 
   useEffect(() => {
-    if (gameOver) return;
+    if (!gameStarted || gameOver) return;
     
     if (timeLeft === 0) {
       setCurrentPlayer(prev => prev === PLAYER_B ? PLAYER_W : PLAYER_B);
@@ -68,10 +69,10 @@ function App() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, gameOver]);
+  }, [timeLeft, gameOver, gameStarted]);
 
   const handleCellClick = (r, c) => {
-    if (gameOver || board[r][c] !== null) return;
+    if (!gameStarted || gameOver || board[r][c] !== null) return;
 
     // 1. Place newly placed piece
     const newBoard = board.map(row => [...row]);
@@ -118,12 +119,19 @@ function App() {
     setTimeLeft(20);
   };
 
+  const startGame = () => {
+    setGameStarted(true);
+    setCurrentPlayer(PLAYER_W);
+    setTimeLeft(20);
+  };
+
   const restartGame = () => {
     setBoard(Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(null)));
-    setCurrentPlayer(Math.random() < 0.5 ? PLAYER_B : PLAYER_W);
+    setCurrentPlayer(PLAYER_W);
     setGameOver(false);
     setWinner(null);
     setTimeLeft(20);
+    setGameStarted(false);
   };
 
   return (
@@ -139,12 +147,16 @@ function App() {
 
       <div className="game-layout">
         <div className="scoreboard">
-          <div className={`player-score ${currentPlayer === PLAYER_B && !gameOver ? 'active' : ''}`}>
+          <div className={`player-score ${gameStarted && currentPlayer === PLAYER_B && !gameOver ? 'active' : ''}`}>
             <span className="player-label">Black</span>
             <span className="score-value">{scores.black}</span>
           </div>
           <div className="turn-indicator">
-            {!gameOver ? (
+            {!gameStarted ? (
+              <button className="start-btn" onClick={startGame}>
+                Start Game
+              </button>
+            ) : !gameOver ? (
               <>
                 <div>{currentPlayer === PLAYER_B ? 'Black' : 'White'}'s Turn</div>
                 <div className="timer" style={{ color: timeLeft <= 5 ? '#ff4b4b' : 'var(--text-highlight)' }}>
@@ -155,7 +167,7 @@ function App() {
               <div>Game Over</div>
             )}
           </div>
-          <div className={`player-score ${currentPlayer === PLAYER_W && !gameOver ? 'active' : ''}`}>
+          <div className={`player-score ${gameStarted && currentPlayer === PLAYER_W && !gameOver ? 'active' : ''}`}>
             <span className="player-label">White</span>
             <span className="score-value">{scores.white}</span>
           </div>

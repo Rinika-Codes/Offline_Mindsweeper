@@ -393,7 +393,7 @@ export default function TutorialRules({ onClose, onStartPlaying }) {
         {/* Top Header */}
         <header className="tutorial-header">
           <div className="tutorial-header-left">
-            <h1 className="tutorial-main-title">Grand Othello — How Captures Work</h1>
+            <h1 className="tutorial-main-title">Eclipse Grid — How Captures Work</h1>
             <span className="tutorial-page-pill">Page {page + 1} of {PAGES.length}</span>
           </div>
           <button 

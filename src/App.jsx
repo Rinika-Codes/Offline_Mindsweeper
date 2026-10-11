@@ -47,7 +47,7 @@ function App() {
   }, [scores]);
 
   useEffect(() => {
-    if (!gameStarted || gameOver) return;
+    if (!gameStarted || gameOver || showRules) return;
     
     if (timeLeft === 0) {
       setCurrentPlayer(prev => prev === PLAYER_B ? PLAYER_W : PLAYER_B);
@@ -60,7 +60,7 @@ function App() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, gameOver, gameStarted]);
+  }, [timeLeft, gameOver, gameStarted, showRules]);
 
   const handleCellClick = (r, c) => {
     if (!gameStarted || gameOver || board[r][c] !== null) return;

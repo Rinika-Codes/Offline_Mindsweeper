@@ -575,24 +575,47 @@
 
 /* SVG Annotations */
 .pulse-target {
-  fill: rgba(102, 252, 241, 0.25);
+  fill: rgba(102, 252, 241, 0.2);
   stroke: #66fcf1;
   stroke-width: 0.8;
-  stroke-dasharray: 2 1.5;
-  animation: svgSpin 4s linear infinite;
+  stroke-dasharray: 2.2 1.4;
+  animation: targetPulse 1.8s ease-in-out infinite, targetDash 2.5s linear infinite;
 }
 
 .pulse-target-white {
-  fill: rgba(255, 255, 255, 0.3);
+  fill: rgba(255, 255, 255, 0.25);
   stroke: #ffffff;
   stroke-width: 0.8;
-  stroke-dasharray: 2 1.5;
-  animation: svgSpin 4s linear infinite;
+  stroke-dasharray: 2.2 1.4;
+  animation: targetPulseWhite 1.8s ease-in-out infinite, targetDash 2.5s linear infinite;
 }
 
-@keyframes svgSpin {
-  0% { transform-origin: center; transform: rotate(0deg); }
-  100% { transform-origin: center; transform: rotate(360deg); }
+@keyframes targetPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px rgba(102, 252, 241, 0.5));
+    opacity: 0.75;
+  }
+  50% {
+    filter: drop-shadow(0 0 5px rgba(102, 252, 241, 1));
+    opacity: 1;
+  }
+}
+
+@keyframes targetPulseWhite {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+    opacity: 0.75;
+  }
+  50% {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 1));
+    opacity: 1;
+  }
+}
+
+@keyframes targetDash {
+  to {
+    stroke-dashoffset: -14.4;
+  }
 }
 
 .target-text {

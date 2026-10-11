@@ -197,15 +197,16 @@ const PAGES = [
           <div className="example-line">
             <span className="example-label">White plays inside:</span>
             <span className="token token-black">B</span>
-            <span className="token token-white">W (Safe)</span>
+            <span className="token token-white">W</span>
             <span className="token token-black">B</span>
+            <span className="safe-pill-tag">✓ Stays White</span>
           </div>
         </div>
         <div className="highlight-callout success-accent">
           <strong>The White piece stays White. It does NOT become Black!</strong>
         </div>
         <div className="rule-note">
-          <strong>Why?</strong> Because the two Black pieces were already on the board. Black did not just place a new piece to complete the capture. <em>Only the newly placed piece can initiate a capture.</em>
+          <strong>Why?</strong> Because the two Black pieces were already on the board. Black did not just place a new piece to complete the capture. <em>Only the newly placed piece can initiate a capture — you cannot capture yourself!</em>
         </div>
       </div>
     ),
@@ -237,8 +238,9 @@ const PAGES = [
           )}
           {p >= 2 && (
             <g className="svg-safe-shield">
-              <circle cx="45" cy="45" r="4.5" className="safe-shield-circle" />
-              <path d="M 43 45 L 44.5 46.5 L 47 43.5" className="safe-check" />
+              <rect x="40.5" y="40.5" width="9" height="9" rx="1.5" className="safe-shield-rect" />
+              <circle cx="48" cy="42" r="1.8" fill="#4ade80" />
+              <path d="M 47.2 42 L 47.8 42.6 L 48.8 41.4" stroke="#000" strokeWidth="0.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
             </g>
           )}
         </>
@@ -457,8 +459,8 @@ export default function TutorialRules({ onClose, onStartPlaying }) {
                           }}
                         >
                           {cell !== null && (
-                            <div className="tutorial-piece-wrapper">
-                              <div className={`piece-inner ${cell === 'B' ? 'is-black' : 'is-white'} ${isNewMoveCell && phase === 1 ? 'piece-drop-anim' : ''}`}>
+                            <div className={`tutorial-piece-wrapper ${isNewMoveCell && phase === 1 ? 'piece-drop-anim' : ''}`}>
+                              <div className={`piece-inner ${cell === 'B' ? 'is-black' : 'is-white'}`}>
                                 <div className="piece-face face-black"></div>
                                 <div className="piece-face face-white"></div>
                               </div>

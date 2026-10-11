@@ -677,6 +677,26 @@
   animation: popIn 0.3s ease;
 }
 
+.safe-shield-rect {
+  fill: none;
+  stroke: #4ade80;
+  stroke-width: 0.8;
+  filter: drop-shadow(0 0 4px rgba(74, 222, 128, 0.7));
+  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.safe-pill-tag {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: 12px;
+  margin-left: 0.3rem;
+  white-space: nowrap;
+}
+
 .safe-check {
   fill: none;
   stroke: #4ade80;
